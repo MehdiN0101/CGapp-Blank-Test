@@ -41,11 +41,16 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope, $cordovaSocialSharing) {
+.controller('PlaylistsCtrl', function($scope, $cordovaSocialSharing, $cordovaStatusbar, $ionicPlatform) {
 
-
+    $ionicPlatform.ready(function() {
+    window.screen.lockOrientation('landscape');
+    console.log("it triggered");
+})
     $scope.shareAnywhere = function() {
+        $cordovaStatusbar.styleColor('black');
         $cordovaSocialSharing.share("This is your message", "This is your subject", "www/imagefile.png", "https://www.thepolyglotdeveloper.com");
+
     }
  
     $scope.shareViaTwitter = function(message, image, link) {
